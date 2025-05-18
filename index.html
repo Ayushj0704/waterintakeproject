@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <title>Water Intake Tracker Portal</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+    <div class="container" role="main" aria-label="Water intake tracker portal">
+        <h1>Water Intake Tracker</h1>
+        <label for="dailyGoalInput">Daily Water Goal (ml)</label>
+        <input type="number" id="dailyGoalInput" min="500" max="10000" step="100" value="2000" aria-describedby="goalDesc" />
+        <div id="goalDesc" class="info">Set your daily water intake goal.</div>
+
+        <div class="buttons-group" aria-label="Select cup size to log intake">
+            <button class="cup-button" data-amount="250" aria-label="Add 250 milliliters">250 ml</button>
+            <button class="cup-button" data-amount="500" aria-label="Add 500 milliliters">500 ml</button>
+            <button class="cup-button" data-amount="750" aria-label="Add 750 milliliters">750 ml</button>
+        </div>
+
+        <div style="text-align:center; margin-top:1rem;">
+            <button id="resetBtn" class="btn-notify" aria-label="Reset water intake count and history">Reset Intake</button>
+        </div>
+
+        <div class="progress-wrapper" aria-live="polite" aria-atomic="true" aria-label="Daily water intake progress">
+            <svg class="circle-progress" viewBox="0 0 120 120" role="img" aria-hidden="true">
+        <circle
+          cx="60"
+          cy="60"
+          r="54"
+          stroke="#e0f7fa"
+          stroke-width="12"
+          fill="none"
+        ></circle>
+        <circle
+          id="progressCircle"
+          cx="60"
+          cy="60"
+          r="54"
+          stroke="#29b6f6"
+          stroke-width="12"
+          fill="none"
+          stroke-linecap="round"
+          stroke-dasharray="339.292"
+          stroke-dashoffset="339.292"
+        ></circle>
+      </svg>
+            <div class="progress-inner" id="progressInner">
+                <div class="intake-value" id="intakeValue">0 ml</div>
+                <div class="intake-label" id="intakeLabel">of 2000 ml</div>
+            </div>
+        </div>
+
+        <div class="history-section">
+            <h2 class="history-title" id="historyLabel">Water Intake History</h2>
+            <div class="history-list" role="list" aria-labelledby="historyLabel" id="historyList" tabindex="0"></div>
+        </div>
+
+        <div class="notification-permission">
+            <button id="btnNotify" class="btn-notify" aria-describedby="notifyDesc">
+        Enable Drink Water Reminder
+      </button>
+            <div id="notifyDesc" class="info" style="font-size:0.85rem; margin-top:6px;">
+                Receive periodic reminders to drink water.
+            </div>
+        </div>
+    </div>
+
+    <div id="popExcitement" class="pop-excitement" role="alert" aria-live="assertive" aria-atomic="true" aria-hidden="true">
+        🎉 Goal Exceeded! Great Job! 🎉
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
